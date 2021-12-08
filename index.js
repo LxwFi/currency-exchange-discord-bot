@@ -1,4 +1,3 @@
-const { Routes } = require('discord-api-types/v9');
 const { Client, Intents } = require('discord.js');
 const bot = new Client({
     intents:
@@ -17,7 +16,7 @@ let CC = new CCClient()
 
 if (process.env.NODE_ENV !== 'production') {
     process.env.botactivity = process.env.botactivitydev;
-}
+}   // this can be removed and updated manually at the bottom
 
 bot.on("messageCreate", async msg => {
     if (!msg.author.bot) {
@@ -29,7 +28,7 @@ bot.on("messageCreate", async msg => {
         }
 
 
-
+        // this is just placeholder, can be entirely deleted if you dont plan to use it
 
     }
 });
@@ -40,25 +39,25 @@ bot.on("ready", () => {
 
     new WOKCommands(bot, {
         // The name of the local folder for your command files
-        commandsDir: path.join(__dirname, 'commands'),
-        testServers: ['650058489401442326'],
-        showWarns: true,
-        botOwners:'190141079184605185',
+        commandsDir: path.join(__dirname, 'commands'), // update to your own command folder name, points to "commands" by default
+        testServers: ['650058489401442326'], // change this to personal server
+        showWarns: true, // personal preference, adjust to your own liking
+        botOwners:'190141079184605185', // change this to your own ID (+ friends)
 
       })
-      .setDefaultPrefix('+')
+      .setDefaultPrefix('+') // change to whatever prefix you would like
       .setColor(0x52307c)
 
 
-    bot.user.setActivity(`${process.env.botactivity}`);
-    bot.user.setUsername("Dev")
-      const image = 'https://static.wikia.nocookie.net/2007scape/images/0/0a/Wise_Old_Man.png/revision/latest/top-crop/width/360/height/360?cb=20171211175901'
-      bot.user.setAvatar(image)
+    bot.user.setActivity(`${process.env.botactivity}`); // as mentioned before make sure to update
+    bot.user.setUsername("Dev") // change username to whatever
+      const image = '' // insert link if you want to update the image
+    //   bot.user.setAvatar(image)
 })
 bot.once("reconnecting", () => {
     console.log("Reconnecting!");
 })
 bot.once("disconnect", () => {
-    console.log("Disconnect!");
+    console.log("Disconnected!");
 })
 bot.login(process.env.token);
