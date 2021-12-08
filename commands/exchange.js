@@ -36,7 +36,7 @@ module.exports = {
     const collector = channel.createMessageCollector({
       filter,
       max: questions.length,
-      time: 1000 * 20
+      time: 1000 * 20 // set this to however long you want timout to be
     })
 
     message.channel.send(questions[counter++])
@@ -62,6 +62,7 @@ module.exports = {
       let from = amount.next().value[1].content;
       let into = amount.next().value[1].content;
       let sum = amount.next().value[1].content;
+      // this just gets the values of each answer inputted into seperate variables
 
       try {
         await CC.from(from).to(into).amount(parseFloat(sum)).rates();
@@ -73,13 +74,15 @@ module.exports = {
           .setColor(0xFF0000)
         await message.reply({ embeds: [embed] });
         return;
-      }
+      } // checks if correct things have been entered and throws err otherwise
 
       let rates = await CC.from(from).to(into).amount(parseFloat(sum)).rates();
       let converted = await CC.from(from).to(into).amount(parseFloat(sum)).convert();
 
       let fromU = from.toUpperCase();
       let intoU = into.toUpperCase();
+      // Converts the codes into upper case for the currency library
+
       if (isNaN(converted)) {
         const embed = new MessageEmbed()
           .setTitle("Exchange error")
