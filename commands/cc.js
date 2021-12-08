@@ -1,3 +1,5 @@
+// clear chat command
+// just added this in to get rid of all the testing i have done
 module.exports = {
 
     category: 'Moderation',
@@ -14,6 +16,7 @@ module.exports = {
     callback: async ({ message, interaction, channel, args }) => {
 
         const amount = args.length ? parseInt(args.shift()) : 10
+        // "10" can be changed, its the default amount that will be deleted if no number is provided
 
         if (amount > 100) {
             return 'Number of deleted messages should not be above 100'
@@ -25,7 +28,6 @@ module.exports = {
         if (message) {
             await message.delete()
         }
-
 
         const { size } = await channel.bulkDelete(amount, true)
 
