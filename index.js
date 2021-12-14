@@ -42,7 +42,7 @@ bot.on("ready", () => {
         commandsDir: path.join(__dirname, 'commands'), // update to your own command folder name, points to "commands" by default
         testServers: ['650058489401442326'], // change this to personal server
         showWarns: true, // personal preference, adjust to your own liking
-        botOwners:'190141079184605185', // change this to your own ID (+ friends)
+        botOwners:['190141079184605185'] // change this to your own ID (+ friends)
 
       })
       .setDefaultPrefix('+') // change to whatever prefix you would like
